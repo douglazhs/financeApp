@@ -11,12 +11,47 @@ import SwiftUI
 struct FinancesView: View {
     var body: some View {
         
-        ScrollView{
+        VStack(alignment: .leading, spacing: 20){
             
-            VStack{
-                //TODO: - Show all mensal costs saved at Core Data
+            
+            HStack{
+                
+                Text("Spents")
+                    .font(.system(size: 25, weight: .bold, design: .default))
+                
+                Spacer()
+                
+                Button {
+                    //TODO: - Search a specific spent
+                } label: {
+                    Image(SEARCH_ICON)
+                }
+                
+                Button {
+                    //TODO: - Filter by category
+                } label: {
+                    Image(FILTER_ICON)
+                        .padding(.leading, 10)
+                }
+            }
+
+            ScrollView(showsIndicators: false){
+                
+                    
+                VStack(alignment: .leading, spacing: 12){
+                    
+                    ForEach(0..<10) { _ in
+                        CostCard()
+                    }
+                    //TODO: - Show all mensal costs saved at Core Data
+                }
             }
         }
+        .background(
+            Color(BACKGROUND_COLOR)
+                .ignoresSafeArea()
+                .frame(width: UIScreen.main.bounds.maxX)
+        )
     }
 }
 
