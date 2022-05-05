@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SpentCategory: String{
+enum SpentCategory: String, CaseIterable{
     case streaming = "Streaming"
     case purchase = "Purchase"
     case other = "Other"

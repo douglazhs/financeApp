@@ -8,13 +8,40 @@
 import SwiftUI
 
 struct AddSpentView: View {
+    @StateObject var viewModel: AddSpentViewModel = AddSpentViewModel()
+    
     var body: some View {
         ZStack{
             VStack{
-//                TextField(
-//                    "Name",
-//                    text: 
-//                )
+                
+                TextField(text: $viewModel.name, prompt: Text("Name")) {
+                    
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                        .foregroundColor(.red)
+                        .background(.blue)
+                }
+                
+                Picker(selection: $viewModel.type) {
+                    
+                    ForEach(SpentCategory.allCases, id: \.self){ cat in
+
+                            Text(cat.rawValue)
+                    }
+                } label: {
+                    Text("Category")
+                    
+                }
+                .pickerStyle(.automatic)
+                
+                DatePicker("Date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
+                
+                TextField(text: $viewModel.name, prompt: Text("Value")) {
+                    
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                        .foregroundColor(.red)
+                        .background(.blue)
+                }
+
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -25,6 +52,10 @@ struct AddSpentView: View {
                 }
             }
         }
+        .background(
+            Color(BACKGROUND_COLOR)
+                .ignoresSafeArea()
+        )
     }
 }
 

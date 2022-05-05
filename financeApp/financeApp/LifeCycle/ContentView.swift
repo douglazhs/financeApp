@@ -10,36 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView{
-            
-            ZStack{
-                
-                VStack{
-                    
-                    WalletCard()
-                        .padding()
-                    
-                    FinancesView()
-                        .padding()
-                        .ignoresSafeArea()
-                    
-                }
-            }
-            .background(
-                Color(BACKGROUND_COLOR)
-            )
-            .navigationViewStyle(.stack)
-            .navigationTitle("Wallet")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        
-                    } label: {
-                        Image(ADD_ICON)
-                    }
-
-                }
-            }
+            InitialView()
         }
     }
 }

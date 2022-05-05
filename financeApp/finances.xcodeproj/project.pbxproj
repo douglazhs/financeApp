@@ -21,6 +21,10 @@
 		507227882822F7E9004548BE /* AddSpentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507227872822F7E9004548BE /* AddSpentView.swift */; };
 		5072278B2822F9B8004548BE /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072278A2822F9B8004548BE /* DataController.swift */; };
 		5072278E2822FBD8004548BE /* FinancesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5072278C2822FBD8004548BE /* FinancesModel.xcdatamodeld */; };
+		509407EC282355DE007ECF83 /* AddSpentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509407EB282355DE007ECF83 /* AddSpentViewModel.swift */; };
+		509407EF28235B50007ECF83 /* FinancesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509407EE28235B50007ECF83 /* FinancesHeaderView.swift */; };
+		509407F228235BB6007ECF83 /* AllSpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509407F128235BB6007ECF83 /* AllSpentsView.swift */; };
+		509407F428235C11007ECF83 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509407F328235C11007ECF83 /* InitialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		507227872822F7E9004548BE /* AddSpentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpentView.swift; sourceTree = "<group>"; };
 		5072278A2822F9B8004548BE /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		5072278D2822FBD8004548BE /* FinancesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinancesModel.xcdatamodel; sourceTree = "<group>"; };
+		509407EB282355DE007ECF83 /* AddSpentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpentViewModel.swift; sourceTree = "<group>"; };
+		509407EE28235B50007ECF83 /* FinancesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancesHeaderView.swift; sourceTree = "<group>"; };
+		509407F128235BB6007ECF83 /* AllSpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSpentsView.swift; sourceTree = "<group>"; };
+		509407F328235C11007ECF83 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +153,11 @@
 		5056E346281EB9ED00A3588B /* FinancesView */ = {
 			isa = PBXGroup;
 			children = (
+				509407F028235BA9007ECF83 /* AllSpentsView */,
+				509407ED28235B31007ECF83 /* FinancesHeaderView */,
 				5056E348281EBA0100A3588B /* FinancesView.swift */,
 				5056E34A281EBA0F00A3588B /* FinancesViewModel.swift */,
+				509407F328235C11007ECF83 /* InitialView.swift */,
 			);
 			path = FinancesView;
 			sourceTree = "<group>";
@@ -181,8 +192,25 @@
 			isa = PBXGroup;
 			children = (
 				507227872822F7E9004548BE /* AddSpentView.swift */,
+				509407EB282355DE007ECF83 /* AddSpentViewModel.swift */,
 			);
 			path = AddSpentView;
+			sourceTree = "<group>";
+		};
+		509407ED28235B31007ECF83 /* FinancesHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				509407EE28235B50007ECF83 /* FinancesHeaderView.swift */,
+			);
+			path = FinancesHeaderView;
+			sourceTree = "<group>";
+		};
+		509407F028235BA9007ECF83 /* AllSpentsView */ = {
+			isa = PBXGroup;
+			children = (
+				509407F128235BB6007ECF83 /* AllSpentsView.swift */,
+			);
+			path = AllSpentsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				509407EF28235B50007ECF83 /* FinancesHeaderView.swift in Sources */,
+				509407F428235C11007ECF83 /* InitialView.swift in Sources */,
 				5056E344281EB9CF00A3588B /* CostCard.swift in Sources */,
 				5056E349281EBA0100A3588B /* FinancesView.swift in Sources */,
 				5056E34B281EBA0F00A3588B /* FinancesViewModel.swift in Sources */,
+				509407EC282355DE007ECF83 /* AddSpentViewModel.swift in Sources */,
+				509407F228235BB6007ECF83 /* AllSpentsView.swift in Sources */,
 				507227882822F7E9004548BE /* AddSpentView.swift in Sources */,
 				5056E334281EB8A300A3588B /* ContentView.swift in Sources */,
 				5072278B2822F9B8004548BE /* DataController.swift in Sources */,
