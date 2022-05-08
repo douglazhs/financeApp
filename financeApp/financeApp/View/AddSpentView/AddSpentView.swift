@@ -11,51 +11,35 @@ struct AddSpentView: View {
     @StateObject var viewModel: AddSpentViewModel = AddSpentViewModel()
     
     var body: some View {
+        
         ZStack{
-            VStack{
+            
+            Color(BACKGROUND_COLOR)
+                .ignoresSafeArea()
+            
+            VStack(spacing: 20){
+        
+                AddTextField(placeholder: "Ex: Spotify", enterType: .text)
+                    .environmentObject(viewModel)
                 
-                TextField(text: $viewModel.name, prompt: Text("Name")) {
+                HStack{
                     
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .foregroundColor(.red)
-                        .background(.blue)
+                    TypePicker()
+                        .environmentObject(viewModel)
+                    
+                    Spacer()
                 }
-                
-                Picker(selection: $viewModel.type) {
-                    
-                    ForEach(SpentCategory.allCases, id: \.self){ cat in
-
-                            Text(cat.rawValue)
-                    }
-                } label: {
-                    Text("Category")
-                    
-                }
-                .pickerStyle(.automatic)
                 
                 DatePicker("Date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
                 
-                TextField(text: $viewModel.name, prompt: Text("Value")) {
-                    
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .foregroundColor(.red)
-                        .background(.blue)
-                }
-
+                AddTextField(placeholder: "Ex: R$9,90", enterType: .number)
+                    .environmentObject(viewModel)
+                
+                Spacer()
             }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack{
-                        Text("Add")
-                            .foregroundColor(.red)
-                    }
-                }
-            }
+            .navigationTitle("Add")
+            .padding()
         }
-        .background(
-            Color(BACKGROUND_COLOR)
-                .ignoresSafeArea()
-        )
     }
 }
 

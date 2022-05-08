@@ -10,5 +10,6 @@ import Foundation
 class AddSpentViewModel: ObservableObject{
     @Published var name: String = ""
     @Published var type: SpentCategory = .other
+    @Published var cost: String = ""
     @Published var date: Date = .now
 }

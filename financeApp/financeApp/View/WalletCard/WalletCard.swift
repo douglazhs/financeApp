@@ -10,8 +10,13 @@ import SwiftUI
 struct WalletCard: View {
     var body: some View {
         ZStack{
+            
+            LinearGradient(colors: [Color("wallet_gradient1"), Color("wallet_gradient2")], startPoint: .topLeading, endPoint: .bottomTrailing)
+            
             HStack{
+                
                 VStack(alignment: .leading, spacing: 20){
+                    
                     Text("Salary")
                         .font(.system(size: 15, weight: .regular, design: .default))
                         .foregroundColor(Color(SECONDARY_FONT_COLOR))
@@ -45,16 +50,13 @@ struct WalletCard: View {
                             .foregroundColor(Color(REMNANT_COLOR))
                     }
                 }
-                .padding(15)
             }
+            .padding(20)
         }
-        .background(
-            Color.white
-                .cornerRadius(20)
-        )
         .frame(width: UIScreen.main.bounds.width-25,
                height: UIScreen.main.bounds.height*0.2)
-        .padding(.horizontal, 25)
+        .cornerRadius(20)
+        .shadow(color: .black.opacity(0.2), radius: 20, x: 4, y: 10)
     }
 }
 

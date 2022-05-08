@@ -15,10 +15,15 @@ struct AllSpentsView: View{
             VStack(alignment: .leading, spacing: 12){
                 
                 ForEach(0..<10) { _ in
-                    CostCard()
+                    NavigationLink {
+                        CostInformationView()
+                    } label: {
+                        CostCard(categoryIcon: "streamingIcon")
+                    }
                 }
                 //TODO: - Show all mensal costs saved at Core Data
             }
         }
+        .frame(maxWidth: .infinity)
     }
 }

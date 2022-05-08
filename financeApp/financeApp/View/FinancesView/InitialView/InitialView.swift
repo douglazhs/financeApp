@@ -30,13 +30,15 @@ struct InitialView: View{
         .navigationTitle("Wallet")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    
+                
+                NavigationLink {
+                    //TODO: - Use coordinator to present screen
+                    AddSpentView()
                 } label: {
                     Image(ADD_ICON)
                 }
-
             }
         }
     }
