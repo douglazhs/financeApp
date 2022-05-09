@@ -8,63 +8,91 @@
 import SwiftUI
 
 struct CostInformationView: View {
+    @StateObject var viewModel = CostInformationViewModel()
     @State var progress: CGFloat = 10
+    @Environment(\.presentationMode) var presentationMode
+    
+    var spent: Spent
+    
+    init(spent: Spent){
+        self.spent = spent
+    }
     
     var body: some View {
         ZStack{
-            Color(BACKGROUND_COLOR)
+            Color.background
                 .ignoresSafeArea()
             
-            VStack(spacing: 30){
+            VStack{
+                LinearGradient(colors: [.background, viewModel.categoryColor], startPoint: .bottom, endPoint: .top)
+                    .frame(maxWidth: UIScreen.main.bounds.maxX, maxHeight: UIScreen.main.bounds.height/3.5)
+                    .ignoresSafeArea()
                 
-                Image("streamingIcon")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .padding(.top, 50)
+                Spacer()
+            }
+            
+
+            VStack(spacing: 40){
+                
+                viewModel.categoryIcon
+                    .padding(.top, 10)
                     .overlay {
                         //TODO: - Edit Button
                     }
                 
                 Label {
-                    Text("Monday 10 April, 2022")
+                    Text(Date.monthYearFormat(spent.date ?? .now))
                         .font(.system(size: 20, weight: .regular, design: .default))
-                        .foregroundColor(Color(SECONDARY_FONT_COLOR))
+                        .foregroundColor(.secondaryFontColor)
                 } icon: {
                     Image("date")
                         .resizable()
                         .frame(width: 24, height: 24)
                 }
+                .padding(.top, 20)
 
                 VStack{
                     
                     Text("Price")
                         .font(.system(size: 12, weight: .semibold, design: .default))
-                        .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                        .foregroundColor(.primaryFont)
                     
-                    Text("R$9,90")
+                    Text(String(format: "R$%.2f", spent.cost))
                         .font(.system(size: 25, weight: .semibold, design: .default))
-                        .foregroundColor(Color(SPENT_COLOR))
+                        .foregroundColor(.spent)
                 }
                 
-                //TODO: - Gráfico
+                Rectangle()
+                    .fill(.primary)
+                    .frame(width: UIScreen.main.bounds.width*0.8, height: 0.2, alignment: .center)
                 
-                ProgressBar(progress: $progress)
-                    .frame(width: 175.0, height: 175.0)
+                ZStack{
+                    ProgressBar(progress: $progress, color: viewModel.categoryColor)
+                        .frame(width: 175.0, height: 175.0)
+                        .padding(.top, 20)
+                    
+                    Text(String(format: "%.0f%", viewModel.percentage))
+                        .font(.system(size: 26, weight: .bold, design: .default))
+                        .foregroundColor(.primaryFont)
+                        .frame(maxWidth: 86)
+                        .multilineTextAlignment(.center)
+                }
                 
-                Text("This value use 0,2% of your total orçament.")
-                    .font(.system(size: 20, weight: .regular, design: .default))
-                    .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                Text("This value use 0,2% of your total budget!")
+                    .font(.system(size: 17, weight: .regular, design: .default))
+                    .foregroundColor(.primaryFont)
                     .frame(maxWidth: UIScreen.main.bounds.maxX/1.5)
                     .multilineTextAlignment(.center)
+                    .padding(.top, 30)
                 
                 Spacer()
                 
             }
             .navigationViewStyle(.stack)
             .navigationTitle("Wallet")
+            .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     
                     Button {
@@ -72,21 +100,29 @@ struct CostInformationView: View {
                     } label: {
                         Image("delete")
                     }
-
                 }
                 
                 ToolbarItem(placement: .principal) {
-                    Text("Spotify")
+                    Text(spent.name ?? "Unknown")
                         .font(.system(size: 20, weight: .semibold, design: .default))
-                        .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                        .foregroundColor(.primaryFont)
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.primaryFont)
+                    }
                 }
             }
         }
-    }
-}
-
-struct CostInformationView_Previews: PreviewProvider {
-    static var previews: some View {
-        CostInformationView()
+        .onAppear {
+            viewModel.getCategory(for: spent.type ?? "")
+            viewModel.chooseCategoryPack()
+            viewModel.getUser()
+            viewModel.calculatePercentage(with: spent.cost)
+        }
     }
 }

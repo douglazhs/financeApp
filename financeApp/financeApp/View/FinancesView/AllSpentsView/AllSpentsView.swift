@@ -9,19 +9,20 @@ import Foundation
 import SwiftUI
 
 struct AllSpentsView: View{
+    @EnvironmentObject var viewModel: FinancesViewModel
+    
     var body: some View{
         ScrollView(showsIndicators: false){
             
             VStack(alignment: .leading, spacing: 12){
                 
-                ForEach(0..<10) { _ in
+                ForEach(viewModel.spents, id: \.id) { spent in
                     NavigationLink {
-                        CostInformationView()
+                        CostInformationView(spent: spent)
                     } label: {
-                        CostCard(categoryIcon: "streamingIcon")
+                        CostCard(spent: spent)
                     }
                 }
-                //TODO: - Show all mensal costs saved at Core Data
             }
         }
         .frame(maxWidth: .infinity)

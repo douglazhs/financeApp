@@ -8,64 +8,69 @@
 import SwiftUI
 
 struct CostCard: View {
-    var categoryIcon: String
+    @StateObject var viewModel: CostCardViewModel = CostCardViewModel()
+    var spent: Spent
     
     var body: some View {
         ZStack{
             
-            LinearGradient(colors: [Color.white, Color.white.opacity(0)], startPoint: .top, endPoint: .bottom)
+            LinearGradient(colors: [Color.white, viewModel.categoryColor.opacity(0.05)], startPoint: .topLeading, endPoint: .bottomTrailing)
             
             HStack{
                 
-                Image(categoryIcon)
+                viewModel.categoryIcon
                     .resizable()
                     .frame(width: 70, height: 70)
                     .padding(20)
                 
-                VStack(alignment: .leading, spacing: 5){
+                VStack(alignment: .leading, spacing: 20){
                     
                     HStack{
                         
-                        Text("Spotify")
+                        Text(spent.name ?? "Unknown")
                             .font(.system(size: 18, weight: .semibold, design: .default))
-                            .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                            .foregroundColor(.primaryFont)
                         
                         Spacer()
                         
-                        Image("separator")
+                        Image(SEPARATOR)
                         
                         Text("0,2%")
                             .font(.system(size: 10, weight: .medium, design: .default))
+                            .foregroundColor(.secondaryFontColor)
                         
-                        Text("April, 2022")
+                        Text(Date.monthYearFormat(spent.date ?? .now))
                             .font(.system(size: 10, weight: .semibold, design: .default))
-                            .foregroundColor(Color(SECONDARY_FONT_COLOR))
+                            .foregroundColor(.secondaryFontColor)
                             .padding(.horizontal, 20)
                     }
                     
                     HStack{
                         
                         Label {
-                            Text("Streaming")
+                            Text(spent.type ?? SpentCategory.unknown.rawValue)
                                 .font(.system(size: 14, weight: .semibold, design: .default))
-                                .foregroundColor(Color(SECONDARY_FONT_COLOR))
+                                .foregroundColor(.secondaryFontColor)
                         } icon: {
-                            Image("bookmark")
+                            Image(BOOKMARK)
                         }
                         
                         Spacer()
-                        
-                        Text("R$9,90")
+
+                        Text(String(format: "R$%.2f", spent.cost))
                             .font(.system(size: 14, weight: .regular, design: .default))
                             .padding(.horizontal, 20)
-                            .foregroundColor(Color(SPENT_COLOR))
+                            .foregroundColor(.spent)
                     }
                 }
             }
         }
+        .onAppear(perform: {
+            viewModel.getCategory(for: spent.type ?? "")
+            viewModel.chooseCategoryPack()
+        })
         .frame(width: UIScreen.main.bounds.width-25,
                height: UIScreen.main.bounds.height*0.12)
         .cornerRadius(20)
-        .shadow(color: .black.opacity(0.2), radius: 20, x: 4, y: 10)
     }
 }

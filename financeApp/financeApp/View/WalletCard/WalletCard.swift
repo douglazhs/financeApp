@@ -8,60 +8,34 @@
 import SwiftUI
 
 struct WalletCard: View {
+    @StateObject var viewModel = WalletViewModel()
+    @Binding var degree: Double
+    
     var body: some View {
         ZStack{
             
-            LinearGradient(colors: [Color("wallet_gradient1"), Color("wallet_gradient2")], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: [.walletGradient1, .walletGradient2], startPoint: .topLeading, endPoint: .bottomTrailing)
             
             HStack{
                 
                 VStack(alignment: .leading, spacing: 20){
                     
-                    Text("Salary")
-                        .font(.system(size: 15, weight: .regular, design: .default))
-                        .foregroundColor(Color(SECONDARY_FONT_COLOR))
-                    
-                    Text("RS4.500,00")
-                        .font(.system(size: 25, weight: .bold, design: .default))
-                        .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                    Salary()
+                        .environmentObject(viewModel)
                     
                     Spacer()
                     
-                    HStack{
-                        Text("Gasos totais")
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                            .foregroundColor(Color(PRIMARY_FONT_COLOR))
-                        
-                        Spacer()
-                        
-                        Text("R$1.500,00")
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                            .foregroundColor(Color(SPENT_COLOR))
-                    }
+                    TotalExpenses()
                     
-                    HStack{
-                        Text("Restante")
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                        
-                        Spacer()
-                        
-                        Text("R$500,00")
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                            .foregroundColor(Color(REMNANT_COLOR))
-                    }
+                    MoneyLeft()
                 }
             }
             .padding(20)
         }
+        .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
         .frame(width: UIScreen.main.bounds.width-25,
-               height: UIScreen.main.bounds.height*0.2)
+               height: UIScreen.main.bounds.height*0.25)
         .cornerRadius(20)
-        .shadow(color: .black.opacity(0.2), radius: 20, x: 4, y: 10)
-    }
-}
-
-struct WalletCard_Previews: PreviewProvider {
-    static var previews: some View {
-        WalletCard()
+        .shadow(color: .black.opacity(0.2), radius: 20, x: 3, y: 7)
     }
 }

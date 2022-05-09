@@ -9,12 +9,13 @@ import SwiftUI
 
 struct AddSpentView: View {
     @StateObject var viewModel: AddSpentViewModel = AddSpentViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         
         ZStack{
             
-            Color(BACKGROUND_COLOR)
+            Color.background
                 .ignoresSafeArea()
             
             VStack(spacing: 20){
@@ -31,6 +32,7 @@ struct AddSpentView: View {
                 }
                 
                 DatePicker("Date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
+                    .font(.system(size: 16, weight: .semibold, design: .default))
                 
                 AddTextField(placeholder: "Ex: R$9,90", enterType: .number)
                     .environmentObject(viewModel)
@@ -38,8 +40,35 @@ struct AddSpentView: View {
                 Spacer()
             }
             .navigationTitle("Add")
+            .navigationBarBackButtonHidden(true)
             .padding()
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.addSpent()
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(CHECKMARK)
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.primaryFont)
+                }
+            }
+        }
+    }
+    
+    func hideKeyboard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

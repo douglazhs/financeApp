@@ -20,25 +20,22 @@ struct AddTextField: View{
             VStack(alignment: .leading){
                 Text("Name")
                     .font(.system(size: 16, weight: .semibold, design: .default))
-                    .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                    .foregroundColor(.primaryFont)
                 
-                TextField(text: $viewModel.name, prompt: Text(placeholder)) {
-                   
-                }
-                .textFieldStyle(.roundedBorder)
-                .textFieldStyle(.plain)
+                TextField(placeholder, text: $viewModel.name)
+                    .textFieldStyle(.automatic)
+                    .textFieldStyle(.plain)
             }
         case .number:
             VStack(alignment: .leading){
                 Text("Cost")
                     .font(.system(size: 16, weight: .semibold, design: .default))
-                    .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                    .foregroundColor(.primaryFont)
                 
-                TextField(text: $viewModel.cost, prompt: Text(placeholder)) {
-                    
-                }
-                .textFieldStyle(.roundedBorder)
-                .keyboardType(.numberPad)
+                TextField(placeholder, text: $viewModel.cost)
+                    .textFieldStyle(.automatic)
+                    .keyboardType(.decimalPad)
+                
             }
         }
     }

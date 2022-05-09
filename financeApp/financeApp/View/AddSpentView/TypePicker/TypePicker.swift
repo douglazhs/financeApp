@@ -16,7 +16,7 @@ struct TypePicker: View{
             
             Text("Category")
                 .font(.system(size: 16, weight: .semibold, design: .default))
-                .foregroundColor(Color(PRIMARY_FONT_COLOR))
+                .foregroundColor(.primaryFont)
             
             ZStack{
                 Picker(selection: $viewModel.type) {
@@ -24,18 +24,21 @@ struct TypePicker: View{
                     ForEach(SpentCategory.allCases, id: \.self){ cat in
                         
                         Text(cat.rawValue)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12, style: .circular)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(.red)
+                            )
+                            .foregroundColor(.primary)
                     }
                 } label: {
-                    
+                    Text("ä")
                 }
                 .padding(5)
                 .pickerStyle(.automatic)
+                .foregroundColor(.primaryFont)
             }
-            .background(
-                Color.gray
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(12)
-            )
+            .foregroundColor(.green)
         }
     }
 }

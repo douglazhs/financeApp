@@ -7,6 +7,10 @@
 
 import SwiftUI
 
-class WalletViewMode: ObservableObject{
+class WalletViewModel: ObservableObject{
+    @Published var budget: String = ""
     
+    func update(){
+        
+    }
 }

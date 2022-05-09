@@ -9,6 +9,8 @@ import SwiftUI
 
 /// When the
 struct FinancesView: View {
+    @StateObject var viewModel = FinancesViewModel()
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20){
@@ -16,12 +18,16 @@ struct FinancesView: View {
             FinancesHeaderView()
             
             AllSpentsView()
+                .environmentObject(viewModel)
         }
         .background(
-            Color(BACKGROUND_COLOR)
+            Color.background
                 .ignoresSafeArea()
                 .frame(width: UIScreen.main.bounds.maxX)
         )
+        .onAppear {
+            viewModel.getAllSpents()
+        }
     }
 }
 
