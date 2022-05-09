@@ -40,6 +40,14 @@ class CostInformationViewModel: NSObject, ObservableObject{
         }
     }
     
+    func delete(_ spent: Spent){
+        do{
+            try spent.delete()
+        }catch{
+            print(error.localizedDescription)
+        }
+    }
+    
     func getCategory(for spentCategory: String){
         switch spentCategory{
         case "Streaming":

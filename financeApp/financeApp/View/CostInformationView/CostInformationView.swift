@@ -10,6 +10,7 @@ import SwiftUI
 struct CostInformationView: View {
     @StateObject var viewModel = CostInformationViewModel()
     @State var progress: CGFloat = 10
+    @State var showAlert: Bool = false
     @Environment(\.presentationMode) var presentationMode
     
     var spent: Spent
@@ -89,14 +90,13 @@ struct CostInformationView: View {
                 
             }
             .navigationViewStyle(.stack)
-            .navigationTitle("Wallet")
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     
                     Button {
-                        
+                        showAlert.toggle()
                     } label: {
                         Image("delete")
                     }
@@ -118,6 +118,17 @@ struct CostInformationView: View {
                 }
             }
         }
+        .alert("Attention", isPresented: $showAlert, actions: {
+            Button("Remove", role: .destructive, action: {
+                viewModel.delete(self.spent)
+            })
+
+            Button("Cancel", role: .cancel) {
+                
+            }
+        }, message: {
+            Text("Are you sure you want to remove?")
+        })
         .onAppear {
             viewModel.getCategory(for: spent.type ?? "")
             viewModel.chooseCategoryPack()
