@@ -27,3 +27,7 @@ public var CLOTHES_CARD_ICON = "clothesIcon"
 public var STREAMING_CARD_ICON = "streamingIcon"
 public var OTHERS_CARD_ICON = "othersIcon"
 
+///Onboarding
+public var ADD_COSTS_ILLUSTRATION = "addCosts_illustration"
+public var CATEGORIES_ILLUSTRATION = "categories_illustration"
+

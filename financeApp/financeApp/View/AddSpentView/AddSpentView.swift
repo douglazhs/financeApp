@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddSpentView: View {
-    @StateObject var viewModel: AddSpentViewModel = AddSpentViewModel()
+    @StateObject var viewModel: AddSpentViewModel = AddSpentViewModel(context: CoreDataManager.shared.persistentStoreContainer.viewContext)
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -23,6 +23,9 @@ struct AddSpentView: View {
                 AddTextField(placeholder: "Ex: Spotify", enterType: .text)
                     .environmentObject(viewModel)
                 
+                AddTextField(placeholder: "Ex: R$9,90", enterType: .number)
+                    .environmentObject(viewModel)
+                
                 HStack{
                     
                     TypePicker()
@@ -33,9 +36,6 @@ struct AddSpentView: View {
                 
                 DatePicker("Date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
                     .font(.system(size: 16, weight: .semibold, design: .default))
-                
-                AddTextField(placeholder: "Ex: R$9,90", enterType: .number)
-                    .environmentObject(viewModel)
                 
                 Spacer()
             }

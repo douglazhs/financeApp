@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("needsAppOnboarding") var needsAppOnboarding: Bool = true
+    
     var body: some View {
         NavigationView{
             InitialView()
+        }
+        .fullScreenCover(isPresented: $needsAppOnboarding) {
+            OnboardingView(needsAppOnboarding: $needsAppOnboarding)
+                .ignoresSafeArea()
         }
     }
 }

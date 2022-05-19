@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct InitialView: View{
+    @StateObject var viewModel = InitialViewModel(context: CoreDataManager.shared.persistentStoreContainer.viewContext)
     @State var showAddScreen: Bool = false
     @State var backDegree: Double = -90.0
     @State var frontDegree: Double = 0.0
@@ -21,17 +22,17 @@ struct InitialView: View{
             VStack{
                 
                 ZStack{
-                    WalletCard(degree: $frontDegree)
+                    WalletCard(user: $viewModel.user, degree: $frontDegree)
                         .padding()
                     
                     StatsCard(degree: $backDegree)
                         .padding()
                 }
                 .onTapGesture {
-//                    flipCard()
+                    //TODO: - Flip the card when touch It
                 }
                 
-                FinancesView()
+                FinancesView(budget: $viewModel.budget)
                     .padding()
                     .ignoresSafeArea()
             }
@@ -47,7 +48,6 @@ struct InitialView: View{
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                
                 NavigationLink {
                     AddSpentView()
 

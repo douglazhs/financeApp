@@ -25,6 +25,14 @@ struct AddTextField: View{
                 TextField(placeholder, text: $viewModel.name)
                     .textFieldStyle(.automatic)
                     .textFieldStyle(.plain)
+                    .frame(maxHeight: 25)
+                    .padding(10)
+                    .background(
+                        Color.walletGradient1
+                            .opacity(0.6)
+                    )
+                    .foregroundColor(.primaryFont)
+                    .cornerRadius(12)
             }
         case .number:
             VStack(alignment: .leading){
@@ -35,7 +43,14 @@ struct AddTextField: View{
                 TextField(placeholder, text: $viewModel.cost)
                     .textFieldStyle(.automatic)
                     .keyboardType(.decimalPad)
-                
+                    .frame(maxHeight: 25)
+                    .padding(10)
+                    .background(
+                        Color.walletGradient1
+                            .opacity(0.6)
+                    )
+                    .foregroundColor(.primaryFont)
+                    .cornerRadius(12)
             }
         }
     }

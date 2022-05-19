@@ -10,6 +10,7 @@ import SwiftUI
 /// When the
 struct FinancesView: View {
     @StateObject var viewModel = FinancesViewModel()
+    @Binding var budget: String
     
     var body: some View {
         
@@ -17,7 +18,7 @@ struct FinancesView: View {
             
             FinancesHeaderView()
             
-            AllSpentsView()
+            AllSpentsView(budget: $budget)
                 .environmentObject(viewModel)
         }
         .background(
@@ -28,11 +29,5 @@ struct FinancesView: View {
         .onAppear {
             viewModel.getAllSpents()
         }
-    }
-}
-
-struct FinancesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FinancesView()
     }
 }

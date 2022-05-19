@@ -10,7 +10,7 @@ import SwiftUI
 struct TotalExpenses: View {
     var body: some View {
         HStack{
-            Text("Gasos totais")
+            Text("Total expanses")
                 .font(.system(size: 15, weight: .regular, design: .default))
                 .foregroundColor(.primaryFont)
             

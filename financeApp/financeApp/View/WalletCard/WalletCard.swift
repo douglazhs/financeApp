@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct WalletCard: View {
-    @StateObject var viewModel = WalletViewModel()
+    @StateObject var viewModel = WalletViewModel(context: CoreDataManager.shared.persistentStoreContainer.viewContext)
+    @Binding var user: User?
     @Binding var degree: Double
     
     var body: some View {
@@ -20,7 +21,7 @@ struct WalletCard: View {
                 
                 VStack(alignment: .leading, spacing: 20){
                     
-                    Salary()
+                    Salary(user: $user)
                         .environmentObject(viewModel)
                     
                     Spacer()

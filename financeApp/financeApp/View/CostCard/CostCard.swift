@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CostCard: View {
     @StateObject var viewModel: CostCardViewModel = CostCardViewModel()
+    @Binding var budget: String
     var spent: Spent
     
     var body: some View {
@@ -35,7 +36,7 @@ struct CostCard: View {
                         
                         Image(SEPARATOR)
                         
-                        Text("0,2%")
+                        Text(String(format: "%.1f", viewModel.calcultatePercentage(budget: budget, cost: spent.cost)))
                             .font(.system(size: 10, weight: .medium, design: .default))
                             .foregroundColor(.secondaryFontColor)
                         

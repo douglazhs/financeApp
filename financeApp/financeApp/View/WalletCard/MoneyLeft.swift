@@ -12,6 +12,7 @@ struct MoneyLeft: View {
         HStack{
             Text("Restante")
                 .font(.system(size: 15, weight: .regular, design: .default))
+                .foregroundColor(.primaryFont)
             
             Spacer()
             

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AllSpentsView: View{
     @EnvironmentObject var viewModel: FinancesViewModel
+    @Binding var budget: String
     
     var body: some View{
         ScrollView(showsIndicators: false){
@@ -20,7 +21,7 @@ struct AllSpentsView: View{
                     NavigationLink {
                         CostInformationView(spent: spent)
                     } label: {
-                        CostCard(spent: spent)
+                        CostCard(budget: $budget, spent: spent)
                     }
                 }
             }

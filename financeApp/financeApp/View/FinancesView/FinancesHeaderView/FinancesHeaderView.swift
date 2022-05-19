@@ -14,6 +14,7 @@ struct FinancesHeaderView: View{
             
             Text("Spents")
                 .font(.system(size: 25, weight: .bold, design: .default))
+                .foregroundColor(.primaryFont)
             
             Spacer()
             

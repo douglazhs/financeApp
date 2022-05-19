@@ -6,14 +6,18 @@
 //
 
 import Foundation
+import CoreData
 
 class AddSpentViewModel: ObservableObject{
     @Published var name: String = ""
     @Published var type: SpentCategory = .other
     @Published var cost: String = ""
     @Published var date: Date = .now
+    var context: NSManagedObjectContext
     
-    var context = CoreDataManager.shared.persistentStoreContainer.viewContext
+    init(context: NSManagedObjectContext){
+        self.context = context
+    }
     
     func addSpent(){
         let spent = Spent(context: context)

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CostInformationView: View {
     @StateObject var viewModel = CostInformationViewModel()
-    @State var progress: CGFloat = 10
     @State var showAlert: Bool = false
     @Environment(\.presentationMode) var presentationMode
     
@@ -32,7 +31,6 @@ struct CostInformationView: View {
                 Spacer()
             }
             
-
             VStack(spacing: 40){
                 
                 viewModel.categoryIcon
@@ -41,53 +39,18 @@ struct CostInformationView: View {
                         //TODO: - Edit Button
                     }
                 
-                Label {
-                    Text(Date.monthYearFormat(spent.date ?? .now))
-                        .font(.system(size: 20, weight: .regular, design: .default))
-                        .foregroundColor(.secondaryFontColor)
-                } icon: {
-                    Image("date")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                }
-                .padding(.top, 20)
-
-                VStack{
-                    
-                    Text("Price")
-                        .font(.system(size: 12, weight: .semibold, design: .default))
-                        .foregroundColor(.primaryFont)
-                    
-                    Text(String(format: "R$%.2f", spent.cost))
-                        .font(.system(size: 25, weight: .semibold, design: .default))
-                        .foregroundColor(.spent)
-                }
+                SpentDate()
+                    .environmentObject(spent)
                 
-                Rectangle()
-                    .fill(.primary)
-                    .frame(width: UIScreen.main.bounds.width*0.8, height: 0.2, alignment: .center)
+                SpentPrice()
+                    .environmentObject(spent)
                 
-                ZStack{
-                    ProgressBar(progress: $progress, color: viewModel.categoryColor)
-                        .frame(width: 175.0, height: 175.0)
-                        .padding(.top, 20)
-                    
-                    Text(String(format: "%.0f%", viewModel.percentage))
-                        .font(.system(size: 26, weight: .bold, design: .default))
-                        .foregroundColor(.primaryFont)
-                        .frame(maxWidth: 86)
-                        .multilineTextAlignment(.center)
-                }
+                Separator()
                 
-                Text("This value use 0,2% of your total budget!")
-                    .font(.system(size: 17, weight: .regular, design: .default))
-                    .foregroundColor(.primaryFont)
-                    .frame(maxWidth: UIScreen.main.bounds.maxX/1.5)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 30)
+                GraphicInformation()
+                    .environmentObject(viewModel)
                 
                 Spacer()
-                
             }
             .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
@@ -134,6 +97,69 @@ struct CostInformationView: View {
             viewModel.chooseCategoryPack()
             viewModel.getUser()
             viewModel.calculatePercentage(with: spent.cost)
+        }
+    }
+}
+
+struct SpentDate: View{
+    @EnvironmentObject var spent: Spent
+    
+    var body: some View{
+        Label {
+            Text(Date.monthYearFormat(spent.date ?? .now))
+                .font(.system(size: 20, weight: .regular, design: .default))
+                .foregroundColor(.secondaryFontColor)
+        } icon: {
+            Image("date")
+                .resizable()
+                .frame(width: 24, height: 24)
+        }
+        .padding(.top, 20)
+    }
+}
+
+struct SpentPrice: View{
+    @EnvironmentObject var spent: Spent
+    
+    var body: some View{
+        VStack{
+            
+            Text("Price")
+                .font(.system(size: 12, weight: .semibold, design: .default))
+                .foregroundColor(.primaryFont)
+            
+            Text(String(format: "R$%.2f", spent.cost))
+                .font(.system(size: 25, weight: .semibold, design: .default))
+                .foregroundColor(.spent)
+        }
+    }
+}
+
+struct GraphicInformation: View{
+    @State var progress: CGFloat = 0
+    @EnvironmentObject var viewModel: CostInformationViewModel
+    
+    var body: some View{
+        VStack{
+            
+            ZStack{
+                ProgressBar(progress: $progress, color: viewModel.categoryColor)
+                    .frame(width: 175.0, height: 175.0)
+                    .padding(.top, 20)
+                
+                Text(String(format: "%.0f%", viewModel.percentage))
+                    .font(.system(size: 26, weight: .bold, design: .default))
+                    .foregroundColor(.primaryFont)
+                    .frame(maxWidth: 86)
+                    .multilineTextAlignment(.center)
+            }
+            
+            Text("This value use 0,2% of your total budget!")
+                .font(.system(size: 17, weight: .regular, design: .default))
+                .foregroundColor(.primaryFont)
+                .frame(maxWidth: UIScreen.main.bounds.maxX/1.5)
+                .multilineTextAlignment(.center)
+                .padding(.top, 30)
         }
     }
 }

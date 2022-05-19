@@ -50,4 +50,10 @@ class CostCardViewModel: ObservableObject{
             categoryIcon = Image(OTHERS_CARD_ICON)
         }
     }
+    
+    func calcultatePercentage(budget: String, cost: Double) -> Double{
+        let formattedBudget = Double("\(budget)") ?? 0.0
+        let result = (100*cost) / formattedBudget
+        return result
+    }
 }

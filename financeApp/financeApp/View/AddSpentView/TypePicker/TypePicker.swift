@@ -32,7 +32,7 @@ struct TypePicker: View{
                             .foregroundColor(.primary)
                     }
                 } label: {
-                    Text("ä")
+                    Text("")
                 }
                 .padding(5)
                 .pickerStyle(.automatic)
