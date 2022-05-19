@@ -16,7 +16,7 @@ struct Salary: View {
     var body: some View {
         VStack(alignment: .leading){
             Text("Salary")
-                .font(.system(size: 15, weight: .regular, design: .default))
+                .font(.custom(URBANIST_REGULAR, size: 15))
                 .foregroundColor(.secondaryFontColor)
             
             if isEditing{
@@ -31,7 +31,7 @@ struct Salary: View {
                             }
                         }
                 }
-                .font(.system(size: 24, weight: .bold, design: .default))
+                .font(.custom(URBANIST_BOLD, size: 24))
                 .foregroundColor(.primaryFont)
                 .padding(.vertical, 5)
             }else{
@@ -62,7 +62,7 @@ struct FormattedSalary: View{
     var body: some View{
         
         Text(String(format: "R$%.02f", viewModel.formattedBudget))
-            .font(.system(size: 24, weight: .bold, design: .default))
+            .font(.custom(URBANIST_BOLD, size: 24))
             .foregroundColor(.primaryFont)
             .onTapGesture {
                 withAnimation {

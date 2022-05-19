@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CostCard: View {
     @StateObject var viewModel: CostCardViewModel = CostCardViewModel()
-    @Binding var budget: String
+    @Binding var user: User?
     var spent: Spent
     
     var body: some View {
@@ -29,19 +29,19 @@ struct CostCard: View {
                     HStack{
                         
                         Text(spent.name ?? "Unknown")
-                            .font(.system(size: 18, weight: .semibold, design: .default))
+                            .font(.custom(URBANIST_SEMIBOLD, size: 18))
                             .foregroundColor(.primaryFont)
                         
                         Spacer()
                         
                         Image(SEPARATOR)
                         
-                        Text(String(format: "%.1f", viewModel.calcultatePercentage(budget: budget, cost: spent.cost)))
-                            .font(.system(size: 10, weight: .medium, design: .default))
+                        Text(String(format: "%.1f", viewModel.calcultatePercentage(with: user?.budget ?? 0.0, and: spent.cost)))
+                            .font(.custom(URBANIST_MEDIUM, size: 10))
                             .foregroundColor(.secondaryFontColor)
                         
                         Text(Date.monthYearFormat(spent.date ?? .now))
-                            .font(.system(size: 10, weight: .semibold, design: .default))
+                            .font(.custom(URBANIST_MEDIUM, size: 10))
                             .foregroundColor(.secondaryFontColor)
                             .padding(.horizontal, 20)
                     }
@@ -50,16 +50,16 @@ struct CostCard: View {
                         
                         Label {
                             Text(spent.type ?? SpentCategory.unknown.rawValue)
-                                .font(.system(size: 14, weight: .semibold, design: .default))
+                                .font(.custom(URBANIST_SEMIBOLD, size: 14))
                                 .foregroundColor(.secondaryFontColor)
                         } icon: {
                             Image(BOOKMARK)
                         }
                         
                         Spacer()
-
+                        
                         Text(String(format: "R$%.2f", spent.cost))
-                            .font(.system(size: 14, weight: .regular, design: .default))
+                            .font(.custom(URBANIST_REGULAR, size: 14))
                             .padding(.horizontal, 20)
                             .foregroundColor(.spent)
                     }

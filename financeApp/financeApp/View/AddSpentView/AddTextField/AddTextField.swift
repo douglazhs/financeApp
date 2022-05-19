@@ -19,7 +19,7 @@ struct AddTextField: View{
         case .text:
             VStack(alignment: .leading){
                 Text("Name")
-                    .font(.system(size: 16, weight: .semibold, design: .default))
+                    .font(.custom(URBANIST_SEMIBOLD, size: 16))
                     .foregroundColor(.primaryFont)
                 
                 TextField(placeholder, text: $viewModel.name)
@@ -37,7 +37,7 @@ struct AddTextField: View{
         case .number:
             VStack(alignment: .leading){
                 Text("Cost")
-                    .font(.system(size: 16, weight: .semibold, design: .default))
+                    .font(.custom(URBANIST_SEMIBOLD, size: 16))
                     .foregroundColor(.primaryFont)
                 
                 TextField(placeholder, text: $viewModel.cost)

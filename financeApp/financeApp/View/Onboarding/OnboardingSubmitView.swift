@@ -18,6 +18,7 @@ struct OnboardingSubmitView: View {
             
             VStack{
                 Text("Enter your budget!")
+                    .font(.custom(URBANIST_SEMIBOLD, size: 24))
                     .font(.system(size: 24, weight: .semibold, design: .default))
                     .foregroundColor(.primaryFont)
                     .padding(.vertical, 20)
@@ -44,9 +45,7 @@ struct OnboardingSubmitView: View {
                 } label: {
                     ZStack{
                         Text("Let's go")
-                            .font(.system(size: 20,
-                                          weight: .semibold,
-                                          design: .default))
+                            .font(.custom(URBANIST_BOLD, size: 20))
                     }
                     .padding(10)
                     .frame(maxWidth: .infinity)

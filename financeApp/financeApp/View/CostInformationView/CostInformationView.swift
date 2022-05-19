@@ -13,9 +13,11 @@ struct CostInformationView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var spent: Spent
+    var user: User?
     
-    init(spent: Spent){
+    init(spent: Spent, user: User?){
         self.spent = spent
+        self.user = user
     }
     
     var body: some View {
@@ -67,7 +69,7 @@ struct CostInformationView: View {
                 
                 ToolbarItem(placement: .principal) {
                     Text(spent.name ?? "Unknown")
-                        .font(.system(size: 20, weight: .semibold, design: .default))
+                        .font(.custom(URBANIST_BOLD, size: 20))
                         .foregroundColor(.primaryFont)
                 }
                 
@@ -95,8 +97,7 @@ struct CostInformationView: View {
         .onAppear {
             viewModel.getCategory(for: spent.type ?? "")
             viewModel.chooseCategoryPack()
-            viewModel.getUser()
-            viewModel.calculatePercentage(with: spent.cost)
+            viewModel.calculatePercentage(with: spent.cost, and: user?.budget ?? 0.0)
         }
     }
 }
@@ -107,7 +108,7 @@ struct SpentDate: View{
     var body: some View{
         Label {
             Text(Date.monthYearFormat(spent.date ?? .now))
-                .font(.system(size: 20, weight: .regular, design: .default))
+                .font(.custom(URBANIST_REGULAR, size: 20))
                 .foregroundColor(.secondaryFontColor)
         } icon: {
             Image("date")
@@ -125,11 +126,11 @@ struct SpentPrice: View{
         VStack{
             
             Text("Price")
-                .font(.system(size: 12, weight: .semibold, design: .default))
+                .font(.custom(URBANIST_SEMIBOLD, size: 12))
                 .foregroundColor(.primaryFont)
             
             Text(String(format: "R$%.2f", spent.cost))
-                .font(.system(size: 25, weight: .semibold, design: .default))
+                .font(.custom(URBANIST_SEMIBOLD, size: 24))
                 .foregroundColor(.spent)
         }
     }
@@ -147,15 +148,15 @@ struct GraphicInformation: View{
                     .frame(width: 175.0, height: 175.0)
                     .padding(.top, 20)
                 
-                Text(String(format: "%.0f%", viewModel.percentage))
-                    .font(.system(size: 26, weight: .bold, design: .default))
+                Text(String(format: "%.0f", viewModel.percentage))
+                    .font(.custom(URBANIST_BOLD, size: 26))
                     .foregroundColor(.primaryFont)
                     .frame(maxWidth: 86)
                     .multilineTextAlignment(.center)
             }
             
-            Text("This value use 0,2% of your total budget!")
-                .font(.system(size: 17, weight: .regular, design: .default))
+            Text("This cost use \(viewModel.percentage)% of your total budget!")
+                .font(.custom(URBANIST_REGULAR, size: 16))
                 .foregroundColor(.primaryFont)
                 .frame(maxWidth: UIScreen.main.bounds.maxX/1.5)
                 .multilineTextAlignment(.center)

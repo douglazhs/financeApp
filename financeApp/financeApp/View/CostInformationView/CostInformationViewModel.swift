@@ -9,36 +9,12 @@ import Foundation
 import SwiftUI
 import CoreData
 
-class CostInformationViewModel: NSObject, ObservableObject{
-    private (set) var context = CoreDataManager.shared.persistentStoreContainer.viewContext
-    private let fetchedUserController: NSFetchedResultsController<User>
-    var user: User?
+class CostInformationViewModel: ObservableObject{
+
     @Published var percentage: CGFloat = 0
     @Published var category: SpentCategory = .unknown
-    @Published var categoryIcon: Image = Image("")
-    @Published var categoryColor: Color = Color("")
-    
-    override init(){
-        fetchedUserController = NSFetchedResultsController(fetchRequest: User.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        super.init()
-        
-        fetchedUserController.delegate = self
-        getUser()
-    }
-    
-    func getUser(){
-        do{
-            try fetchedUserController.performFetch()
-            guard let user = fetchedUserController.fetchedObjects else{
-                return
-            }
-            guard let user = user.first else { return }
-            self.user = user
-        }catch{
-            print(error.localizedDescription)
-        }
-    }
+    @Published var categoryIcon: Image = Image(UNKNOWN_ICON)
+    @Published var categoryColor: Color = .unknown
     
     func delete(_ spent: Spent){
         do{
@@ -86,19 +62,7 @@ class CostInformationViewModel: NSObject, ObservableObject{
         }
     }
     
-    func calculatePercentage(with spent: Double){
-        self.percentage = (100*spent)/(user?.budget ?? 0.0)
-    }
-}
-
-extension CostInformationViewModel: NSFetchedResultsControllerDelegate{
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard let user = controller.fetchedObjects as? [User] else{
-            return
-        }
-        guard let user = user.first else {
-            return
-        }
-        self.user = user
+    func calculatePercentage(with spent: Double, and budget: Double){
+        self.percentage = (100*spent) / budget
     }
 }

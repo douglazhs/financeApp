@@ -15,9 +15,8 @@ struct TypePicker: View{
         VStack(alignment: .leading){
             
             Text("Category")
-                .font(.system(size: 16, weight: .semibold, design: .default))
-                .foregroundColor(.primaryFont)
-            
+                .font(.custom(URBANIST_SEMIBOLD, size: 16))
+
             ZStack{
                 Picker(selection: $viewModel.type) {
                     

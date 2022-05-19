@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AllSpentsView: View{
     @EnvironmentObject var viewModel: FinancesViewModel
-    @Binding var budget: String
+    @Binding var user: User?
     
     var body: some View{
         ScrollView(showsIndicators: false){
@@ -19,9 +19,9 @@ struct AllSpentsView: View{
                 
                 ForEach(viewModel.spents, id: \.id) { spent in
                     NavigationLink {
-                        CostInformationView(spent: spent)
+                        CostInformationView(spent: spent, user: user)
                     } label: {
-                        CostCard(budget: $budget, spent: spent)
+                        CostCard(user: $user, spent: spent)
                     }
                 }
             }

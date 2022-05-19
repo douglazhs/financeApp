@@ -10,7 +10,7 @@ import SwiftUI
 /// When the
 struct FinancesView: View {
     @StateObject var viewModel = FinancesViewModel()
-    @Binding var budget: String
+    @Binding var user: User?
     
     var body: some View {
         
@@ -18,7 +18,7 @@ struct FinancesView: View {
             
             FinancesHeaderView()
             
-            AllSpentsView(budget: $budget)
+            AllSpentsView(user: $user)
                 .environmentObject(viewModel)
         }
         .background(

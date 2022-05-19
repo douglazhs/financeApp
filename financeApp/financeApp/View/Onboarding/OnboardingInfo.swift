@@ -19,7 +19,7 @@ struct OnboardingInfo: View {
             
             VStack{
                 Text(title)
-                    .font(.system(size: 24, weight: .semibold, design: .default))
+                    .font(.custom(URBANIST_SEMIBOLD, size: 24))
                     .foregroundColor(.primaryFont)
                     .padding(.top, 20)
                 
@@ -33,6 +33,8 @@ struct OnboardingInfo: View {
                 Spacer()
                 
                 Text(description)
+                    .font(.custom(URBANIST_SEMIBOLD, size: 16))
+
                     .font(.system(size: 16, weight: .semibold, design: .default))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.primaryFont)

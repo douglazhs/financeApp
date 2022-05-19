@@ -14,6 +14,7 @@ struct InitialView: View{
     @State var backDegree: Double = -90.0
     @State var frontDegree: Double = 0.0
     @State var isFlipped: Bool = false
+    
     let durationAndDelay : CGFloat = 0.2
     
     var body: some View{
@@ -32,7 +33,7 @@ struct InitialView: View{
                     //TODO: - Flip the card when touch It
                 }
                 
-                FinancesView(budget: $viewModel.budget)
+                FinancesView(user: $viewModel.user)
                     .padding()
                     .ignoresSafeArea()
             }

@@ -35,7 +35,7 @@ struct AddSpentView: View {
                 }
                 
                 DatePicker("Date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
-                    .font(.system(size: 16, weight: .semibold, design: .default))
+                    .font(.custom(URBANIST_SEMIBOLD, size: 16))
                 
                 Spacer()
             }

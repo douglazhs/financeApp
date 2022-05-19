@@ -13,6 +13,10 @@
 		50350B7C2835842F00BA423B /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50350B7B2835842F00BA423B /* OnboardingViewModel.swift */; };
 		50350B7E2835854900BA423B /* DataFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50350B7D2835854900BA423B /* DataFetchable.swift */; };
 		50350B802835C50A00BA423B /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50350B7F2835C50A00BA423B /* InitialViewModel.swift */; };
+		50350B832835DD2100BA423B /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50350B822835DD2100BA423B /* Urbanist-Bold.ttf */; };
+		50350B852835DD3100BA423B /* Urbanist-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50350B842835DD3100BA423B /* Urbanist-SemiBold.ttf */; };
+		50350B872835DD3F00BA423B /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50350B862835DD3F00BA423B /* Urbanist-Regular.ttf */; };
+		50350B892835DD6400BA423B /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50350B882835DD6400BA423B /* Urbanist-Medium.ttf */; };
 		503B250128283A8D00B86341 /* MoneyLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B250028283A8D00B86341 /* MoneyLeft.swift */; };
 		503B250328283AAD00B86341 /* TotalExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B250228283AAD00B86341 /* TotalExpenses.swift */; };
 		503B250528283AFE00B86341 /* Salary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B250428283AFE00B86341 /* Salary.swift */; };
@@ -58,6 +62,11 @@
 		50350B7B2835842F00BA423B /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		50350B7D2835854900BA423B /* DataFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchable.swift; sourceTree = "<group>"; };
 		50350B7F2835C50A00BA423B /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
+		50350B822835DD2100BA423B /* Urbanist-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Bold.ttf"; sourceTree = "<group>"; };
+		50350B842835DD3100BA423B /* Urbanist-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-SemiBold.ttf"; sourceTree = "<group>"; };
+		50350B862835DD3F00BA423B /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Regular.ttf"; sourceTree = "<group>"; };
+		50350B882835DD6400BA423B /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
+		50350B8A2835DEA700BA423B /* finances-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "finances-Info.plist"; sourceTree = "<group>"; };
 		503B250028283A8D00B86341 /* MoneyLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyLeft.swift; sourceTree = "<group>"; };
 		503B250228283AAD00B86341 /* TotalExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalExpenses.swift; sourceTree = "<group>"; };
 		503B250428283AFE00B86341 /* Salary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salary.swift; sourceTree = "<group>"; };
@@ -134,6 +143,17 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		50350B812835DD0B00BA423B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				50350B882835DD6400BA423B /* Urbanist-Medium.ttf */,
+				50350B862835DD3F00BA423B /* Urbanist-Regular.ttf */,
+				50350B842835DD3100BA423B /* Urbanist-SemiBold.ttf */,
+				50350B822835DD2100BA423B /* Urbanist-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		503B250628283C9800B86341 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +185,7 @@
 		5056E325281EB8A300A3588B = {
 			isa = PBXGroup;
 			children = (
+				50350B8A2835DEA700BA423B /* finances-Info.plist */,
 				5056E330281EB8A300A3588B /* financeApp */,
 				5056E32F281EB8A300A3588B /* Products */,
 			);
@@ -185,6 +206,7 @@
 				502F778A2821C48B00D29E03 /* Constants */,
 				5056E351281EBD5600A3588B /* Data */,
 				503B250628283C9800B86341 /* Extensions */,
+				50350B812835DD0B00BA423B /* Fonts */,
 				5056E342281EB9A200A3588B /* LifeCycle */,
 				503B2509282844F600B86341 /* Models */,
 				5056E341281EB99600A3588B /* Others */,
@@ -423,8 +445,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50350B832835DD2100BA423B /* Urbanist-Bold.ttf in Resources */,
+				50350B892835DD6400BA423B /* Urbanist-Medium.ttf in Resources */,
+				50350B852835DD3100BA423B /* Urbanist-SemiBold.ttf in Resources */,
 				5056E339281EB8A400A3588B /* Preview Assets.xcassets in Resources */,
 				5056E336281EB8A400A3588B /* Assets.xcassets in Resources */,
+				50350B872835DD3F00BA423B /* Urbanist-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +632,7 @@
 				DEVELOPMENT_TEAM = 22298649MR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "finances-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -635,6 +662,7 @@
 				DEVELOPMENT_TEAM = 22298649MR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "finances-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

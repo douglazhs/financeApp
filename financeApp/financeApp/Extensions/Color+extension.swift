@@ -22,4 +22,5 @@ extension Color{
     static var purchase = Color("Purchase_Color")
     static var clothes = Color("Clothes_Color")
     static var others = Color("Others_Color")
+    static var unknown = Color("Unkwnon_Color")
 }

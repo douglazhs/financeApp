@@ -13,7 +13,7 @@ struct FinancesHeaderView: View{
         HStack{
             
             Text("Spents")
-                .font(.system(size: 25, weight: .bold, design: .default))
+                .font(.custom(URBANIST_BOLD, size: 24))
                 .foregroundColor(.primaryFont)
             
             Spacer()
