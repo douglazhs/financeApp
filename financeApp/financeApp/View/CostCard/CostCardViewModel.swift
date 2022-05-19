@@ -13,6 +13,8 @@ class CostCardViewModel: ObservableObject{
     @Published var categoryIcon: Image = Image("unknownIcon")
     @Published var category: SpentCategory = .unknown
     
+    /// Get category of the spent, based on the String saved on CoreData
+    /// - Parameter spentCategory: Value returned from CoreData
     func getCategory(for spentCategory: String){
         switch spentCategory{
         case "Streaming":
@@ -31,6 +33,7 @@ class CostCardViewModel: ObservableObject{
         }
     }
     
+    /// Choose category color and icon, based on the return of the CoreData
     func chooseCategoryPack(){
         switch category {
         case .streaming:
@@ -51,6 +54,11 @@ class CostCardViewModel: ObservableObject{
         }
     }
     
+    /// Calculate the percentage of the spent based on user budget
+    /// - Parameters:
+    ///   - budget: User budget
+    ///   - cost: User cost
+    /// - Returns: Calculated percentage
     func calcultatePercentage(with budget: Double, and cost: Double) -> Double{
         let formattedBudget = Double("\(budget)") ?? 0.0
         let result = (100*cost) / formattedBudget

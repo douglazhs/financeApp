@@ -8,27 +8,26 @@
 import SwiftUI
 
 struct WalletCard: View {
-    @StateObject var viewModel = WalletViewModel(context: CoreDataManager.shared.persistentStoreContainer.viewContext)
-    @Binding var user: User?
+    @StateObject var viewModel = WalletViewModel(dataManager: CoreDataManager.shared)
     @Binding var degree: Double
     
     var body: some View {
         ZStack{
-            
             LinearGradient(colors: [.walletGradient1, .walletGradient2], startPoint: .topLeading, endPoint: .bottomTrailing)
             
             HStack{
                 
                 VStack(alignment: .leading, spacing: 20){
-                    
-                    Salary(user: $user)
+                    Salary()
                         .environmentObject(viewModel)
                     
                     Spacer()
                     
                     TotalExpenses()
+                        .environmentObject(viewModel)
                     
                     MoneyLeft()
+                        .environmentObject(viewModel)
                 }
             }
             .padding(20)

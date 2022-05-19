@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct TotalExpenses: View {
+    @EnvironmentObject var viewModel: WalletViewModel
+    
     var body: some View {
         HStack{
             Text("Total expanses")
-                .font(.custom(URBANIST_REGULAR, size: 14))
-
-                .font(.system(size: 15, weight: .regular, design: .default))
+                .font(.custom(URBANIST_SEMIBOLD, size: 14))
                 .foregroundColor(.primaryFont)
             
             Spacer()
             
-            Text("R$1.500,00")
-                .font(.custom(URBANIST_MEDIUM, size: 14))
+            Text(String(format: "R$%.2f", viewModel.totalExpanses))
+                .font(.custom(URBANIST_SEMIBOLD, size: 14))
                 .foregroundColor(.spent)
         }
     }

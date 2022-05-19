@@ -30,7 +30,7 @@ struct OnboardingView: View {
                         .tag(2)
                 }
                 .tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .interactive))
                 .padding(.top, 10)
             }
         }

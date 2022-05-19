@@ -10,29 +10,19 @@ import CoreData
 import SwiftUI
 
 class FinancesViewModel: NSObject, ObservableObject{
-    var context = CoreDataManager.shared.persistentStoreContainer.viewContext
-    private let fetchedSpentsController: NSFetchedResultsController<Spent>
-    
     @Published var spents = [Spent]()
+    var dataManager: DataFetchable
     
-    override init(){
-        fetchedSpentsController = NSFetchedResultsController(fetchRequest: Spent.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        
+    init(dataManager: DataFetchable){
+        self.dataManager = dataManager
         super.init()
-        
-        fetchedSpentsController.delegate = self
-        getAllSpents()
     }
     
     func getAllSpents(){
-        do{
-            try fetchedSpentsController.performFetch()
-            guard let spents = fetchedSpentsController.fetchedObjects else{
-                return
+        dataManager.fetchSpents { spents in
+            withAnimation {
+                self.spents = spents
             }
-            self.spents = spents
-        }catch{
-            print(error.localizedDescription)
         }
     }
 }

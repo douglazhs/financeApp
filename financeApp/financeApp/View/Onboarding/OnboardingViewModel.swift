@@ -16,6 +16,7 @@ class OnboardingViewModel: ObservableObject{
         self.context = context
     }
     
+    /// Create user and save at CoreData just once
     func createUser(){
         let user = User(context: context)
         user.budget = Double(budget) ?? 0

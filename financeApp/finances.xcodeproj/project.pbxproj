@@ -39,6 +39,7 @@
 		5056E34E281EBB3400A3588B /* WalletCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5056E34D281EBB3400A3588B /* WalletCard.swift */; };
 		5056E350281EBB4500A3588B /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5056E34F281EBB4500A3588B /* WalletViewModel.swift */; };
 		5067B65B2823F9FD007DAA55 /* EnterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067B65A2823F9FD007DAA55 /* EnterType.swift */; };
+		506CD95A28367B3400CC3FDB /* FontModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CD95928367B3400CC3FDB /* FontModifiers.swift */; };
 		507227852822E892004548BE /* SpentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507227842822E892004548BE /* SpentCategory.swift */; };
 		507227882822F7E9004548BE /* AddSpentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507227872822F7E9004548BE /* AddSpentView.swift */; };
 		5072278B2822F9B8004548BE /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072278A2822F9B8004548BE /* DataController.swift */; };
@@ -90,6 +91,7 @@
 		5056E34D281EBB3400A3588B /* WalletCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCard.swift; sourceTree = "<group>"; };
 		5056E34F281EBB4500A3588B /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		5067B65A2823F9FD007DAA55 /* EnterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterType.swift; sourceTree = "<group>"; };
+		506CD95928367B3400CC3FDB /* FontModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifiers.swift; sourceTree = "<group>"; };
 		507227842822E892004548BE /* SpentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentCategory.swift; sourceTree = "<group>"; };
 		507227872822F7E9004548BE /* AddSpentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpentView.swift; sourceTree = "<group>"; };
 		5072278A2822F9B8004548BE /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				507227842822E892004548BE /* SpentCategory.swift */,
 				5067B65A2823F9FD007DAA55 /* EnterType.swift */,
 				503B25182828803C00B86341 /* CategoryPack.swift */,
+				506CD95928367B3400CC3FDB /* FontModifiers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				503B250828283CB100B86341 /* Color+extension.swift in Sources */,
 				503B250328283AAD00B86341 /* TotalExpenses.swift in Sources */,
 				503B2515282877B300B86341 /* StatsCard.swift in Sources */,
+				506CD95A28367B3400CC3FDB /* FontModifiers.swift in Sources */,
 				509407F428235C11007ECF83 /* InitialView.swift in Sources */,
 				503B25192828803C00B86341 /* CategoryPack.swift in Sources */,
 				503B2511282864DA00B86341 /* CostInformationViewModel.swift in Sources */,

@@ -7,10 +7,11 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class AddSpentViewModel: ObservableObject{
     @Published var name: String = ""
-    @Published var type: SpentCategory = .other
+    @Published var type: SpentCategory = .unknown
     @Published var cost: String = ""
     @Published var date: Date = .now
     var context: NSManagedObjectContext
@@ -19,6 +20,7 @@ class AddSpentViewModel: ObservableObject{
         self.context = context
     }
     
+    /// Save spent on CoreData
     func addSpent(){
         let spent = Spent(context: context)
         spent.id = UUID()
@@ -31,5 +33,10 @@ class AddSpentViewModel: ObservableObject{
         }catch{
             print(error.localizedDescription)
         }
+    }
+    
+    /// Hide keyboard when click at screen
+    func hideKeyboard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

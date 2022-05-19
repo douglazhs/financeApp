@@ -12,32 +12,18 @@ struct TypePicker: View{
     @EnvironmentObject var viewModel: AddSpentViewModel
     
     var body: some View{
-        VStack(alignment: .leading){
-            
-            Text("Category")
-                .font(.custom(URBANIST_SEMIBOLD, size: 16))
-
-            ZStack{
-                Picker(selection: $viewModel.type) {
+        ZStack{
+            Picker("Category Type", selection: $viewModel.type) {
+                
+                ForEach(SpentCategory.allCases, id: \.self){ cat in
                     
-                    ForEach(SpentCategory.allCases, id: \.self){ cat in
-                        
-                        Text(cat.rawValue)
-                            .background(
-                                RoundedRectangle(cornerRadius: 12, style: .circular)
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(.red)
-                            )
-                            .foregroundColor(.primary)
-                    }
-                } label: {
-                    Text("")
+                    Text(cat.rawValue)
+                        .pickerViewModifier()
                 }
-                .padding(5)
-                .pickerStyle(.automatic)
-                .foregroundColor(.primaryFont)
             }
-            .foregroundColor(.green)
+            .pickerViewModifier()
+            .pickerStyle(.wheel)
+            .foregroundColor(.primaryFont)
         }
     }
 }

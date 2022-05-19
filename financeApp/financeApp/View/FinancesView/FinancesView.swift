@@ -9,7 +9,7 @@ import SwiftUI
 
 /// When the
 struct FinancesView: View {
-    @StateObject var viewModel = FinancesViewModel()
+    @StateObject var viewModel = FinancesViewModel(dataManager: CoreDataManager.shared)
     @Binding var user: User?
     
     var body: some View {

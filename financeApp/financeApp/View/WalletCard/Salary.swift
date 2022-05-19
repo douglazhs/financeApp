@@ -9,17 +9,16 @@ import SwiftUI
 
 struct Salary: View {
     @EnvironmentObject var viewModel: WalletViewModel
-    @State var isEditing: Bool = true
+    
     @State var showPopUp: Bool = false
-    @Binding var user: User?
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Salary")
+            Text("Budget")
                 .font(.custom(URBANIST_REGULAR, size: 15))
                 .foregroundColor(.secondaryFontColor)
             
-            if isEditing{
+            if viewModel.isEditing{
                 HStack(spacing: 0){
                     Text("R$")
                     
@@ -27,7 +26,7 @@ struct Salary: View {
                         .keyboardType(.numberPad)
                         .onSubmit {
                             withAnimation {
-                                showPopUp.toggle()
+                                viewModel.showPopUp = true
                             }
                         }
                 }
@@ -35,15 +34,14 @@ struct Salary: View {
                 .foregroundColor(.primaryFont)
                 .padding(.vertical, 5)
             }else{
-                FormattedSalary(isEditing: $isEditing)
+                FormattedSalary(isEditing: $viewModel.isEditing)
                     .environmentObject(viewModel)
                     .padding(.vertical, 5)
             }
         }
-        .alert("New Budget!", isPresented: $showPopUp, actions: {
+        .alert("New Budget!", isPresented: $viewModel.showPopUp, actions: {
             Button("Yes", role: .destructive, action: {
-                viewModel.updateBudget(for: user)
-                isEditing.toggle()
+                viewModel.updateBudget()
             })
 
             Button("Cancel", role: .cancel) {
@@ -61,7 +59,7 @@ struct FormattedSalary: View{
     
     var body: some View{
         
-        Text(String(format: "R$%.02f", viewModel.formattedBudget))
+        Text(String(format: "R$%.02f", "%.2f\(viewModel.budget)"))
             .font(.custom(URBANIST_BOLD, size: 24))
             .foregroundColor(.primaryFont)
             .onTapGesture {

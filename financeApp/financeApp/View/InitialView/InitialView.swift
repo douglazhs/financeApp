@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct InitialView: View{
-    @StateObject var viewModel = InitialViewModel(context: CoreDataManager.shared.persistentStoreContainer.viewContext)
+    @StateObject var viewModel = InitialViewModel(dataManager: CoreDataManager.shared)
     @State var showAddScreen: Bool = false
     @State var backDegree: Double = -90.0
     @State var frontDegree: Double = 0.0
@@ -23,7 +23,7 @@ struct InitialView: View{
             VStack{
                 
                 ZStack{
-                    WalletCard(user: $viewModel.user, degree: $frontDegree)
+                    WalletCard(degree: $frontDegree)
                         .padding()
                     
                     StatsCard(degree: $backDegree)
@@ -39,7 +39,7 @@ struct InitialView: View{
             }
         }
         .onTapGesture {
-            hideKeyboard()
+            viewModel.hideKeyboard()
         }
         .background(
             Color.background
@@ -51,16 +51,11 @@ struct InitialView: View{
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
                     AddSpentView()
-
                 } label: {
                     Image(ADD_ICON)
                 }
             }
         }
-    }
-    
-    func hideKeyboard(){
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     func flipCard () {

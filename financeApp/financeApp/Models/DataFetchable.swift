@@ -8,7 +8,9 @@
 import Foundation
 
 public protocol DataFetchable{
+    func fetchUser(completion: @escaping (User) -> Void)
     
+    func fetchSpents(completion: @escaping ([Spent]) -> Void)
 }
 
 extension CoreDataManager: DataFetchable{

@@ -14,37 +14,39 @@ struct AddSpentView: View {
     var body: some View {
         
         ZStack{
-            
             Color.background
                 .ignoresSafeArea()
             
-            VStack(spacing: 20){
-        
-                AddTextField(placeholder: "Ex: Spotify", enterType: .text)
-                    .environmentObject(viewModel)
-                
-                AddTextField(placeholder: "Ex: R$9,90", enterType: .number)
-                    .environmentObject(viewModel)
-                
-                HStack{
-                    
-                    TypePicker()
+            Form{
+                Section("Name"){
+                    AddTextField(placeholder: "Ex: Spotify", enterType: .text)
                         .environmentObject(viewModel)
-                    
-                    Spacer()
                 }
                 
-                DatePicker("Date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
-                    .font(.custom(URBANIST_SEMIBOLD, size: 16))
+                Section("Cost"){
+                    
+                    AddTextField(placeholder: "Ex: R$9,90", enterType: .number)
+                        .environmentObject(viewModel)
+                }
                 
-                Spacer()
+                Section("Type"){
+                    TypePicker()
+                        .environmentObject(viewModel)
+                }
+                .frame(maxHeight: UIScreen.main.bounds.height*0.15)
+                
+                Section("Date"){
+                    DatePicker("Purchase date", selection: $viewModel.date, in: ...Date(), displayedComponents: .date)
+                        .font(.custom(URBANIST_SEMIBOLD, size: 16))
+                        .foregroundColor(.primaryFont)
+                }
             }
+            .background(Color.background)
             .navigationTitle("Add")
             .navigationBarBackButtonHidden(true)
-            .padding()
         }
         .onTapGesture {
-            hideKeyboard()
+            viewModel.hideKeyboard()
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -65,10 +67,6 @@ struct AddSpentView: View {
                 }
             }
         }
-    }
-    
-    func hideKeyboard(){
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
