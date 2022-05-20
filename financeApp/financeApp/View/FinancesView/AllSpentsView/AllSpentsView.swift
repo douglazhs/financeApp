@@ -25,6 +25,7 @@ struct AllSpentsView: View{
                     }
                 }
             }
+            .listBlur()
         }
         .frame(maxWidth: .infinity)
     }

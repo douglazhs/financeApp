@@ -53,6 +53,9 @@
 		50A57D6D28341E81007F6F0B /* OnboardingSubmitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A57D6C28341E81007F6F0B /* OnboardingSubmitView.swift */; };
 		50A57D6F28342470007F6F0B /* OnboardingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A57D6E28342470007F6F0B /* OnboardingInfo.swift */; };
 		50CABB242825965900471230 /* TypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CABB232825965900471230 /* TypePicker.swift */; };
+		50CE303F28381BDD009C2E35 /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE303E28381BDD009C2E35 /* View+extension.swift */; };
+		50CE304228381C4F009C2E35 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE304128381C4F009C2E35 /* SearchView.swift */; };
+		50CE304428381C6D009C2E35 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE304328381C6D009C2E35 /* SearchViewModel.swift */; };
 		50DC405C2832D5440052BD07 /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC405B2832D5440052BD07 /* Separator.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +108,9 @@
 		50A57D6C28341E81007F6F0B /* OnboardingSubmitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubmitView.swift; sourceTree = "<group>"; };
 		50A57D6E28342470007F6F0B /* OnboardingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInfo.swift; sourceTree = "<group>"; };
 		50CABB232825965900471230 /* TypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePicker.swift; sourceTree = "<group>"; };
+		50CE303E28381BDD009C2E35 /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
+		50CE304128381C4F009C2E35 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		50CE304328381C6D009C2E35 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		50DC405B2832D5440052BD07 /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +169,7 @@
 				503B250C2828479400B86341 /* Spent+extension.swift */,
 				503B250E282855C600B86341 /* Date+extension.swift */,
 				503B251228286A4100B86341 /* User+extension.swift */,
+				50CE303E28381BDD009C2E35 /* View+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +237,7 @@
 		5056E33F281EB8D900A3588B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				50CE304028381C42009C2E35 /* Search */,
 				50A57D6928341D65007F6F0B /* Onboarding */,
 				50DC405A2832D5290052BD07 /* Shared */,
 				507227862822F7CD004548BE /* AddSpentView */,
@@ -382,6 +390,15 @@
 			path = TypePicker;
 			sourceTree = "<group>";
 		};
+		50CE304028381C42009C2E35 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				50CE304128381C4F009C2E35 /* SearchView.swift */,
+				50CE304328381C6D009C2E35 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		50DC405A2832D5290052BD07 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,12 +495,15 @@
 				5056E349281EBA0100A3588B /* FinancesView.swift in Sources */,
 				5056E34B281EBA0F00A3588B /* FinancesViewModel.swift in Sources */,
 				50CABB242825965900471230 /* TypePicker.swift in Sources */,
+				50CE304228381C4F009C2E35 /* SearchView.swift in Sources */,
 				501819D9282751A400E41F1B /* CostInformationView.swift in Sources */,
 				50A57D6F28342470007F6F0B /* OnboardingInfo.swift in Sources */,
+				50CE303F28381BDD009C2E35 /* View+extension.swift in Sources */,
 				50A57D6B28341D7D007F6F0B /* OnboardingView.swift in Sources */,
 				509407EC282355DE007ECF83 /* AddSpentViewModel.swift in Sources */,
 				509407F228235BB6007ECF83 /* AllSpentsView.swift in Sources */,
 				507227882822F7E9004548BE /* AddSpentView.swift in Sources */,
+				50CE304428381C6D009C2E35 /* SearchViewModel.swift in Sources */,
 				5056E334281EB8A300A3588B /* ContentView.swift in Sources */,
 				503B250F282855C600B86341 /* Date+extension.swift in Sources */,
 				5072278B2822F9B8004548BE /* DataController.swift in Sources */,

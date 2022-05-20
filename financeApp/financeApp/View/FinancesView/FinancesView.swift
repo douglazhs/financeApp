@@ -17,10 +17,14 @@ struct FinancesView: View {
         VStack(alignment: .leading, spacing: 20){
             
             FinancesHeaderView()
+                .environmentObject(viewModel)
             
             AllSpentsView(user: $user)
                 .environmentObject(viewModel)
         }
+        .popover(isPresented: $viewModel.showSearchView, content: {
+            SearchView()
+        })
         .background(
             Color.background
                 .ignoresSafeArea()

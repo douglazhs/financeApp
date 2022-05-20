@@ -14,9 +14,9 @@ struct CostCard: View {
     
     var body: some View {
         ZStack{
-            LinearGradient(colors: [Color.white, viewModel.categoryColor.opacity(0.05)],
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
+            LinearGradient(colors: [Color.walletGradient1, Color.walletGradient2],
+                           startPoint: .top,
+                           endPoint: .bottom)
             
             HStack{
                 viewModel.categoryIcon
@@ -34,8 +34,8 @@ struct CostCard: View {
         }
         .overlay(content: {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(lineWidth: 1.5)
-                .foregroundColor(viewModel.categoryColor)
+                .stroke(lineWidth: 1)
+                .foregroundColor(.walletGradient1)
                 .frame(width: UIScreen.main.bounds.width-25,
                        height: UIScreen.main.bounds.height*0.12)
         })

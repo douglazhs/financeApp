@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct FinancesHeaderView: View{
+    @EnvironmentObject var viewModel: FinancesViewModel
+    
     var body: some View{
         HStack{
             
@@ -19,7 +21,7 @@ struct FinancesHeaderView: View{
             Spacer()
             
             Button {
-                //TODO: - Search a specific spent
+                viewModel.showSearchView = true
             } label: {
                 Image(SEARCH_ICON)
             }
@@ -31,7 +33,6 @@ struct FinancesHeaderView: View{
                     .padding(.leading, 10)
             }
         }
-
     }
 }
 

@@ -18,15 +18,9 @@ struct MoneyLeft: View {
             
             Spacer()
             
-            Text(String(format: "%.2f", viewModel.remainingBudget))
+            Text(String(format: "R$%.2f", viewModel.remainingBudget))
                 .font(.custom(URBANIST_SEMIBOLD, size: 14))
                 .foregroundColor(.remnant)
         }
-    }
-}
-
-struct MoneyLeft_Previews: PreviewProvider {
-    static var previews: some View {
-        MoneyLeft()
     }
 }

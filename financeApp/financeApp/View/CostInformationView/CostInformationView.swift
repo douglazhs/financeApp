@@ -26,8 +26,8 @@ struct CostInformationView: View {
                 .ignoresSafeArea()
             
             VStack{
-                LinearGradient(colors: [.background, viewModel.categoryColor], startPoint: .bottom, endPoint: .top)
-                    .frame(maxWidth: UIScreen.main.bounds.maxX, maxHeight: UIScreen.main.bounds.height/3.5)
+                LinearGradient(colors: [.background, .walletGradient1.opacity(0.7)], startPoint: .bottom, endPoint: .top)
+                    .frame(maxWidth: UIScreen.main.bounds.maxX, maxHeight: UIScreen.main.bounds.height/2)
                     .ignoresSafeArea()
                 
                 Spacer()
