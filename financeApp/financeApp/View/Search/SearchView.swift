@@ -16,51 +16,71 @@ struct SearchView: View {
                 .ignoresSafeArea()
             
             VStack{
-                TextField("Spent name", text: $viewModel.spentName)
-                    .textFieldStyle(.automatic)
-                    .textFieldStyle(.plain)
-                    .textFieldModifier()
-                    .foregroundColor(.primaryFont)
-                    .onChange(of: viewModel.spentName, perform: { _ in
-                        viewModel.filterSpents()
-                    })
-                    .onSubmit {
-                        viewModel.hideKeyboard()
-                    }
+                NavigationHeader()
                 
-                    .padding()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(lineWidth: 1)
-                            .fill(
-                                LinearGradient(colors: [.walletGradient2, .walletGradient1], startPoint: .topLeading, endPoint: .topTrailing)
-                            )
-                    }
+                SearchTextField()
+                    .environmentObject(viewModel)
                 
-                HStack(spacing: 0){
-                    Text("Results for: ")
-                        .font(.custom(URBANIST_BOLD, size: 16))
-                    
-                    Text("\(viewModel.spentName)")
-                        .foregroundColor(.remnant)
-                        .font(.custom(URBANIST_BOLD, size: 16))
-                }
+                SearchString()
+                    .environmentObject(viewModel)
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(viewModel.filteredSpents, id: \.self){ spent in
-                        NavigationLink {
-                            CostInformationView(spent: spent, user: viewModel.user)
-                        } label: {
-                            CostCard(user: $viewModel.user, spent: spent)
-                        }
-                    }
-                }
-                .padding(.top, 10)
+                SearchResults()
+                    .environmentObject(viewModel)
             }
             .padding()
         }
         .onTapGesture {
             viewModel.hideKeyboard()
+        }
+    }
+}
+
+struct NavigationHeader: View{
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View{
+        HStack{
+            Spacer()
+            
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "xmark")
+            }
+            .foregroundColor(Color.primaryFont)
+        }
+        .padding(.bottom, 15)
+    }
+}
+
+struct SearchResults: View{
+    @EnvironmentObject var viewModel: SearchViewModel
+    
+    var body: some View{
+        ScrollView(.vertical, showsIndicators: false) {
+            ForEach(viewModel.filteredSpents, id: \.self){ spent in
+                NavigationLink {
+                    CostInformationView(spent: spent, user: viewModel.user)
+                } label: {
+                    CostCard(user: $viewModel.user, spent: spent)
+                }
+            }
+        }
+        .padding(.top, 10)
+    }
+}
+
+struct SearchString: View{
+    @EnvironmentObject var viewModel: SearchViewModel
+    
+    var body: some View{
+        HStack(spacing: 0){
+            Text("Results for: ")
+                .font(.custom(URBANIST_BOLD, size: 16))
+            
+            Text("\(viewModel.spentName)")
+                .foregroundColor(.remnant)
+                .font(.custom(URBANIST_BOLD, size: 16))
         }
     }
 }

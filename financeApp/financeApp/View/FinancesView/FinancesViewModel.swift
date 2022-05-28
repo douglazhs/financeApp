@@ -12,6 +12,7 @@ import SwiftUI
 class FinancesViewModel: NSObject, ObservableObject{
     @Published var spents = [Spent]()
     @Published var showSearchView: Bool = false
+    @Published var lineWidth: CGFloat = 0
     
     var dataManager: DataFetchable
     

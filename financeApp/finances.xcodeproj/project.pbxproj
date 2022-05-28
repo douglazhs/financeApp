@@ -57,6 +57,8 @@
 		50CE304228381C4F009C2E35 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE304128381C4F009C2E35 /* SearchView.swift */; };
 		50CE304428381C6D009C2E35 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE304328381C6D009C2E35 /* SearchViewModel.swift */; };
 		50DC405C2832D5440052BD07 /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC405B2832D5440052BD07 /* Separator.swift */; };
+		50E4F5C2283DB43600A5E370 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4F5C1283DB43600A5E370 /* SearchTextField.swift */; };
+		50E4F5C4283DB52E00A5E370 /* PathLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4F5C3283DB52E00A5E370 /* PathLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +114,8 @@
 		50CE304128381C4F009C2E35 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		50CE304328381C6D009C2E35 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		50DC405B2832D5440052BD07 /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
+		50E4F5C1283DB43600A5E370 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		50E4F5C3283DB52E00A5E370 /* PathLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +397,7 @@
 		50CE304028381C42009C2E35 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				50E4F5C1283DB43600A5E370 /* SearchTextField.swift */,
 				50CE304128381C4F009C2E35 /* SearchView.swift */,
 				50CE304328381C6D009C2E35 /* SearchViewModel.swift */,
 			);
@@ -403,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				50DC405B2832D5440052BD07 /* Separator.swift */,
+				50E4F5C3283DB52E00A5E370 /* PathLine.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -509,6 +515,7 @@
 				5072278B2822F9B8004548BE /* DataController.swift in Sources */,
 				5072278E2822FBD8004548BE /* FinancesModel.xcdatamodeld in Sources */,
 				503B251B28288E4500B86341 /* CostCardViewModel.swift in Sources */,
+				50E4F5C4283DB52E00A5E370 /* PathLine.swift in Sources */,
 				501819DD28275A8000E41F1B /* ProgressBar.swift in Sources */,
 				50A57D6D28341E81007F6F0B /* OnboardingSubmitView.swift in Sources */,
 				503B250B2828450400B86341 /* BaseModel.swift in Sources */,
@@ -516,6 +523,7 @@
 				503B250128283A8D00B86341 /* MoneyLeft.swift in Sources */,
 				50DC405C2832D5440052BD07 /* Separator.swift in Sources */,
 				5067B65B2823F9FD007DAA55 /* EnterType.swift in Sources */,
+				50E4F5C2283DB43600A5E370 /* SearchTextField.swift in Sources */,
 				50350B802835C50A00BA423B /* InitialViewModel.swift in Sources */,
 				503B250D2828479400B86341 /* Spent+extension.swift in Sources */,
 				50350B7C2835842F00BA423B /* OnboardingViewModel.swift in Sources */,

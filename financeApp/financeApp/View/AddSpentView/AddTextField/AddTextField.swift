@@ -17,6 +17,7 @@ struct AddTextField: View{
         
         switch enterType {
         case .text:
+            
             TextField(placeholder, text: $viewModel.name)
                 .textFieldStyle(.automatic)
                 .textFieldStyle(.plain)

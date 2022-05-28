@@ -14,8 +14,8 @@ extension View {
             VStack {
                 Rectangle()
                     .frame(height: 0)
-                    .padding(.top)
-                    .background(LinearGradient(colors: [Color("backgroundColor"), Color("backgroundColor").opacity(0.1)],
+                    .padding(.top, 15)
+                    .background(LinearGradient(colors: [Color.background, Color.background.opacity(0.1)],
                                                startPoint: .top,
                                                endPoint: .bottom))
                 Spacer()

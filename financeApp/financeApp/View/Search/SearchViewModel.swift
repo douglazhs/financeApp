@@ -24,7 +24,7 @@ class SearchViewModel: ObservableObject{
     
     func fetchSpents(){
         dataManager.fetchSpents { spents in
-            withAnimation {
+            withAnimation(.easeIn(duration: 0.5)){
                 self.spents = spents
             }
         }

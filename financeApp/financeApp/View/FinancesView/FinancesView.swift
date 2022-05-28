@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-/// When the
 struct FinancesView: View {
     @StateObject var viewModel = FinancesViewModel(dataManager: CoreDataManager.shared)
     @Binding var user: User?
@@ -19,10 +18,12 @@ struct FinancesView: View {
             FinancesHeaderView()
                 .environmentObject(viewModel)
             
+//            PathLine(lineWidth: $viewModel.lineWidth)
+            
             AllSpentsView(user: $user)
                 .environmentObject(viewModel)
         }
-        .popover(isPresented: $viewModel.showSearchView, content: {
+        .fullScreenCover(isPresented: $viewModel.showSearchView, content: {
             SearchView()
         })
         .background(
